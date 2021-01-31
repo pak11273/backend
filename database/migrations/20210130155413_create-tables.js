@@ -1,5 +1,3 @@
-const { table } = require("../connections");
-
 exports.up = function (knex) {
   return knex.schema
     .createTable("countries", (tbl) => {
@@ -17,38 +15,41 @@ exports.up = function (knex) {
       tbl.string("item_qty_measurement", 128);
     })
     .createTable("users", (tbl) => {
-      tbl.increments("user_id");
+      tbl.increments();
+      tbl.string("first_name", 128).notNullable();
+      tbl.string("last_name", 128).notNullable();
+      tbl.varchar("email", 128).notNullable().unique();
       tbl.varchar("username", 128).notNullable().unique().index();
       tbl.varchar("password", 128).notNullable();
-      tbl.varchar("email", 128).notNullable().unique();
-      tbl
-        .int("country_id")
-        .unsigned()
-        .notNullable()
-        .references("country_id")
-        .inTable("countries")
-        .onUpdate("CASCADE")
-        .onDelete("CASCADE");
+      tbl.string("country", 128).notNullable();
+      //   tbl
+      //     .int("country_id")
+      //     .unsigned()
+      //     .notNullable()
+      //     .references("country_id")
+      //     .inTable("countries")
+      //     .onUpdate("CASCADE")
+      //     .onDelete("CASCADE");
       tbl.boolean("user_role").notNullable().defaultTo(false);
-    })
-    .createTable("user_items", (tbl) => {
-      tbl
-        .int("user_id")
-        .unsigned()
-        .notNullable()
-        .references("user_id")
-        .inTable("users")
-        .onUpdate("CASCADE")
-        .onDelete("CASCADE");
-      tbl
-        .int("item_id")
-        .unsigned()
-        .notNullable()
-        .references("item_id")
-        .inTable("items")
-        .onUpdate("CASCADE")
-        .onDelete("CASCADE");
     });
+  // .createTable("user_items", (tbl) => {
+  //   tbl
+  //     .int("user_id")
+  //     .unsigned()
+  //     .notNullable()
+  //     .references("id")
+  //     .inTable("users")
+  //     .onUpdate("CASCADE")
+  //     .onDelete("CASCADE");
+  //   tbl
+  //     .int("item_id")
+  //     .unsigned()
+  //     .notNullable()
+  //     .references("item_id")
+  //     .inTable("items")
+  //     .onUpdate("CASCADE")
+  //     .onDelete("CASCADE");
+  // });
 };
 
 exports.down = function (knex) {
