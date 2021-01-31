@@ -1,44 +1,27 @@
-// Update with your config settings.
+const pg = require("pg");
+
+const localConnection = "postgresql://localhost/African-Marketplace";
+
+let connection;
+
+if (process.env.DATABASE_URL) {
+  pg.defaults.ssl = { rejectUnauthorized: false };
+  connection = process.env.DATABASE_URL;
+} else {
+  connection = localConnection;
+}
+
+const sharedConfig = {
+  client: "pg",
+  connection,
+  migrations: { directory: "./api/database/migrations" },
+  seeds: { directory: "./api/database/seeds" },
+};
 
 module.exports = {
-
-  development: {
-    client: 'sqlite3',
-    connection: {
-      filename: './dev.sqlite3'
-    }
-  },
-
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  },
-
+  devlopment: { ...sharedConfig },
   production: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  }
-
+    ...sharedConfig,
+    pool: { min: 2, max: 10 },
+  },
 };
