@@ -8,18 +8,18 @@ module.exports = {
 };
 
 async function add(user) {
-  const [id] = await db("users").insert(user, "id");
+  const [id] = await db("countries").insert(user, "country_id");
   return findById(id);
 }
 
 function findBy(filter) {
-  return db("users").where(filter).first();
+  return db("countries").where(filter).first();
 }
 
 function find() {
-  return db("users");
+  return db("countries");
 }
 
 function findById(id) {
-  return db("users").where({ id }).first();
+  return db("countries").where({ id }).first();
 }

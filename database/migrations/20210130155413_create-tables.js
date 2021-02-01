@@ -1,12 +1,12 @@
 exports.up = function (knex) {
   return knex.schema
     .createTable("countries", (tbl) => {
-      tbl.increments("country_id");
+      tbl.increments();
       tbl.string("name", 128).notNullable().unique();
       tbl.string("name_abbr", 128).notNullable().unique();
     })
     .createTable("items", (tbl) => {
-      tbl.increments("item_id", 128);
+      tbl.increments();
       tbl.string("item_name", 128).notNullable().unique();
       tbl.string("item_category").notNullable();
       tbl.string("item_description");
@@ -23,33 +23,30 @@ exports.up = function (knex) {
       tbl.varchar("password", 128).notNullable();
       tbl.string("country", 128).notNullable();
       //   tbl
-      //     .int("country_id")
+      //     .integer("country_id")
       //     .unsigned()
       //     .notNullable()
-      //     .references("country_id")
+      //     .references("id")
       //     .inTable("countries")
-      //     .onUpdate("CASCADE")
       //     .onDelete("CASCADE");
       tbl.boolean("user_role").notNullable().defaultTo(false);
+    })
+    .createTable("user_items", (tbl) => {
+      tbl
+        .integer("user_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("users")
+        .onDelete("CASCADE");
+      tbl
+        .integer("item_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("items")
+        .onDelete("CASCADE");
     });
-  // .createTable("user_items", (tbl) => {
-  //   tbl
-  //     .int("user_id")
-  //     .unsigned()
-  //     .notNullable()
-  //     .references("id")
-  //     .inTable("users")
-  //     .onUpdate("CASCADE")
-  //     .onDelete("CASCADE");
-  //   tbl
-  //     .int("item_id")
-  //     .unsigned()
-  //     .notNullable()
-  //     .references("item_id")
-  //     .inTable("items")
-  //     .onUpdate("CASCADE")
-  //     .onDelete("CASCADE");
-  // });
 };
 
 exports.down = function (knex) {
