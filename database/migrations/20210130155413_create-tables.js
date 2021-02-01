@@ -5,6 +5,10 @@ exports.up = function (knex) {
       tbl.string("name", 128).notNullable().unique();
       tbl.string("name_abbr", 128).notNullable().unique();
     })
+    .createTable("categories", (tbl) => {
+      tbl.increments();
+      tbl.string("category_name", 128).notNullable().unique();
+    })
     .createTable("items", (tbl) => {
       tbl.increments();
       tbl.string("item_name", 128).notNullable().unique();
@@ -54,5 +58,6 @@ exports.down = function (knex) {
     .dropTableIfExists("user_items")
     .dropTableIfExists("users")
     .dropTableIfExists("items")
+    .dropTableIfExists("categories")
     .dropTableIfExists("countries");
 };
