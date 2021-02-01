@@ -1,10 +1,11 @@
 const router = require("express").Router();
-const Countries = require("./countries-model.js");
+
+const Categories = require("./categories-model.js");
 
 router.get("/", async (req, res, next) => {
   try {
-    const countries = await Countries.find();
-    res.status(200).json(countries);
+    const categories = await Categories.find();
+    res.status(200).json(categories);
   } catch (err) {
     next(err);
   }
@@ -12,8 +13,8 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const country = await Countries.findById(req.params.id);
-    res.status(200).json(country);
+    const category = await Categories.findById(req.params.id);
+    res.status(200).json(category);
   } catch (err) {
     next(err);
   }

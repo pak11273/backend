@@ -6,6 +6,7 @@ const cors = require("cors");
 const authRouter = require("./auth/auth-router.js");
 const usersRouter = require("./users/users-router.js");
 const countriesRouter = require("./countries/countries-router.js");
+const categoriesRouter = require("./categories/categories-router.js");
 
 const server = express();
 
@@ -16,6 +17,7 @@ server.use(cors());
 server.use("/api/auth", authRouter);
 server.use("/api/users", usersRouter);
 server.use("/api/countries", countriesRouter);
+server.use("/api/categories", categoriesRouter);
 
 server.get("/", (req, res) => {
   res.json({
