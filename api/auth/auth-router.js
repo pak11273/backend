@@ -28,7 +28,7 @@ router.post("/register", validateUser, async (req, res, next) => {
 });
 
 // [POST] = Login an existing user in the database
-router.post("/login", validateUser, async (req, res, next) => {
+router.post("/login", async (req, res, next) => {
   const { username, password } = req.body;
   try {
     const allegedUser = await Users.findBy({ username });

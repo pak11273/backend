@@ -22,13 +22,13 @@ exports.up = function (knex) {
       tbl.varchar("username", 128).notNullable().unique().index();
       tbl.varchar("password", 128).notNullable();
       tbl.string("country", 128).notNullable();
-      tbl
-        .integer("country_id")
-        .unsigned()
-        .notNullable()
-        .references("id")
-        .inTable("countries")
-        .onDelete("CASCADE");
+      //   tbl
+      //     .integer("country_id")
+      //     .unsigned()
+      //     .notNullable()
+      //     .references("id")
+      //     .inTable("countries")
+      //     .onDelete("CASCADE");
       tbl.boolean("user_role").notNullable().defaultTo(false);
     })
     .createTable("user_items", (tbl) => {
