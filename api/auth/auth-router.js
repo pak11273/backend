@@ -10,7 +10,6 @@ const {
   validateUserId,
   generateToken,
 } = require("./auth-services.js");
-// const { isValid } = require("../users/users-services.js");
 
 // [POST] = Registers a new user in the database
 router.post("/register", validateUser, async (req, res, next) => {
