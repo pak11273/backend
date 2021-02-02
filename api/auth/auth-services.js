@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 module.exports = {
   errorHandler,
   validateUser,
-  validateUserId,
   generateToken,
 };
 
@@ -34,22 +33,6 @@ async function validateUser(req, res, next) {
     next();
   } else {
     res.status(400).json({ message: "*Missing*: User Body" });
-  }
-}
-
-async function validateUserId(req, res, next) {
-  try {
-    const user = await Users.getById(req.params.id);
-    if (user) {
-      req.user = user;
-      next();
-    } else {
-      res
-        .status(404)
-        .json({ message: `user with id ${req.params.id} not found` });
-    }
-  } catch (error) {
-    res.status(500).json({ message: `Bad Request` });
   }
 }
 
