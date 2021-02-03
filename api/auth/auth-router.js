@@ -28,8 +28,8 @@ router.post("/register", validateUser, async (req, res, next) => {
 
 // [POST] = Login an existing user in the database
 router.post("/login", async (req, res, next) => {
-  const { username, password, id } = req.body;
-  const { id } = req.params.id;
+  const { username, password } = req.body;
+
   try {
     const allegedUser = await Users.findBy({ username });
     if (isValid(req.body)) {
@@ -38,8 +38,11 @@ router.post("/login", async (req, res, next) => {
         bcrypt.compareSync(password, allegedUser.password)
       ) {
         const token = generateToken(allegedUser);
-        res.status(200).json({ message: "Welcome to our App!", id, token });
+        res
+          .status(200)
+          .json({ message: "Welcome to our App!", allegedUser, token });
       } else {
+        g;
         res
           .status(401)
           .json({ message: "Invalid Credentials, Please try again" });
