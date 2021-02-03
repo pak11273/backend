@@ -23,8 +23,4 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
-  // asdasdwasdw
-});
-
 module.exports = router;
