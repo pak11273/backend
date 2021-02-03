@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const { validateItem, validateItemId } = require("./items-services.js");
+const restricted = require("../auth/restricted-middleware.js");
 const Items = require("../items/items-model.js");
 
-router.get("/", async (req, res, next) => {
+router.get("/", restricted, async (req, res, next) => {
   try {
     const items = await Items.find();
     res.status(200).json(items);
