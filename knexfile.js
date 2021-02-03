@@ -12,7 +12,7 @@ if (process.env.DATABASE_URL) {
 } else {
   connection = localConnection;
 }
-
+// connection = localConnection;
 const sharedConfig = {
   client: "pg",
   connection,
