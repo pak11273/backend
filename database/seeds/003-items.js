@@ -1,0 +1,81 @@
+exports.seed = function (knex) {
+  return knex("items").insert([
+    {
+      item_name: "white beans",
+      item_category: "Beans",
+      item_price: 1.0,
+      item_qty: 1,
+      item_qty_measurement: "LBS",
+    },
+    {
+      item_name: "yellow beans",
+      item_category: "Beans",
+      item_price: 1.2,
+      item_qty: 1,
+      item_qty_measurement: "LBS",
+    },
+    {
+      item_name: "imported rice",
+      item_category: "Rice",
+      item_price: 0.9,
+      item_qty: 1,
+      item_qty_measurement: "LBS",
+    },
+    {
+      item_name: "kahama rice",
+      item_category: "Rice",
+      item_price: 0.85,
+      item_qty: 1,
+      item_qty_measurement: "LBS",
+    },
+    {
+      item_name: "kayiso rice",
+      item_category: "Rice",
+      item_price: 0.8,
+      item_qty: 1,
+      item_qty_measurement: "LBS",
+    },
+    {
+      item_name: "mbeya rice",
+      item_category: "Rice",
+      item_price: 0.75,
+      item_qty: 1,
+      item_qty_measurement: "LBS",
+    },
+    {
+      item_name: "paddy rice",
+      item_category: "Rice",
+      item_price: 0.5,
+      item_qty: 1,
+      item_qty_measurement: "LBS",
+    },
+    {
+      item_name: "avocado",
+      item_category: "Fruits",
+      item_price: 3.3,
+      item_qty: 1,
+      item_qty_measurement: "EA",
+    },
+    {
+      item_name: "apple bananas",
+      item_category: "Fruits",
+      item_price: 1.1,
+      item_qty: 1,
+      item_qty_measurement: "EA",
+    },
+    {
+      item_name: "lemons",
+      item_category: "Fruits",
+      item_price: 1.5,
+      item_qty: 1,
+      item_qty_measurement: "EA",
+    },
+    {
+      item_name: "coffee",
+      item_category: "Other",
+      item_price: 5,
+      item_qty: 1,
+      item_qty_measurement: "OZ",
+    },
+  ]);
+};
