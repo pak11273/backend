@@ -9,8 +9,8 @@ module.exports = {
   remove,
 };
 
-async function add(category) {
-  const [id] = await db("items").insert(category, "id");
+async function add(item) {
+  const [id] = await db("items").insert(item, "id");
   return findById(id);
 }
 
@@ -23,7 +23,16 @@ function find() {
 }
 
 function findById(id) {
-  return db("items").where({ id }).first();
+  return db("items")
+    .join("categories as c", "i.category_id", "c.id")
+    .select(
+      "i.item_name",
+      "c.category_name",
+      "i.item_price",
+      "i.item_qty",
+      "i.item_qty_measurement"
+    )
+    .where({ item_id: id });
 }
 
 function update(id, itemBody) {

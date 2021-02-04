@@ -1,6 +1,5 @@
 const router = require("express").Router();
 
-const { validateUserId } = require("./users-services.js");
 const Users = require("./users-model.js");
 
 router.get("/", async (req, res, next) => {
