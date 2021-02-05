@@ -17,7 +17,7 @@ exports.seed = function (knex) {
       first_name: "test1234",
       last_name: "test1",
       email: "1234@gmail.com",
-      username: "test1",
+      username: "test123",
       password: "$2y$08$5uDsuTpg3AIhCdh/6Uqx5OCnJcXFozljUCAwnRctq1wm8TBKCe8Ee",
       country: "USA",
       user_role: false,
