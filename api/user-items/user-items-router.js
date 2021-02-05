@@ -19,14 +19,13 @@ router.post("/addItem", async (req, res, next) => {
   }
 });
 
-// put request for userItem list:::::
-router.put("/:id/list/:id", async (req, res, next) => {});
+// router.put("/:id/list/:id", async (req, res, next) => {});
 
 router.delete("/:id/list/:id", async (req, res, next) => {
   try {
     const deletedItem = await Users.removeItem(req.params.id);
     res.status(200).json({
-      message: `the item with the id of ${req.params.id} has been deleted from the database `,
+      message: `Success! ${deletedItem} the item with the id of ${req.params.id} has been deleted from the database `,
     });
   } catch (error) {
     next(error);
