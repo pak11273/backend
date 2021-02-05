@@ -19,6 +19,9 @@ router.post("/addItem", async (req, res, next) => {
   }
 });
 
+// put request for userItem list:::::
+router.put("/:id/list/:id", async (req, res, next) => {});
+
 router.delete("/:id/list/:id", async (req, res, next) => {
   try {
     const deletedItem = await Users.removeItem(req.params.id);
