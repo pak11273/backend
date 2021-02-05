@@ -3,7 +3,7 @@ exports.seed = function (knex) {
   return knex("users").insert([
     {
       id: 1,
-      first_name: "test",
+      first_name: "test123",
       last_name: "test",
       email: "123@gmail.com",
       username: "test",
@@ -14,7 +14,7 @@ exports.seed = function (knex) {
     },
     {
       id: 2,
-      first_name: "test1",
+      first_name: "test1234",
       last_name: "test1",
       email: "1234@gmail.com",
       username: "test1",
