@@ -1,5 +1,7 @@
 # back-end
 
+## Server runs on port: 5000
+
 African Marketplace API URL:
 https://african-marketplace-tt14.herokuapp.com/api
 
