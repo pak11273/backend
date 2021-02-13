@@ -25,8 +25,7 @@ server.use("/api/userItems", userItemsRouter);
 
 server.get("/", (req, res) => {
   res.json({
-    apiSuccessMessage:
-      "Congratulations, Welcome to the African Marketplace API!",
+    apiSuccessMessage: "Congratulations, Welcome to the Marketplace API!",
   });
 });
 
